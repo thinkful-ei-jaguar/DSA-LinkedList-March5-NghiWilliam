@@ -72,6 +72,7 @@ class LinkedList {
       console.log("Item not found");
       return;
     }
+    // Relink pointers
     previousNode.next = currNode.next;
   }
 
@@ -122,6 +123,38 @@ class LinkedList {
     }
     return (current.next = new _Node(item, current.next));
   }
+
+  insertAt(item, position) {
+    if (this.head === null) {
+      this.head = new _Node(item);
+      console.log("This list was empty - added as first item");
+      return;
+    }
+
+    switch (position) {
+      case 0:
+        console.log("Cannot insert position at 0");
+        return;
+      case 1:
+        this.head = new _Node(item, this.head);
+        return;
+      default:
+        let count = 1;
+        let current = this.head;
+        let previous = this.head;
+        while (count < position && current.next !== null) {
+          previous = current;
+          current = current.next;
+          count++;
+        }
+        if (current.next === null) {
+          console.log("Position exceeded length of list");
+          return;
+        } else {
+          previous.next = new _Node(item, current);
+        }
+    }
+  }
 }
 
 function main() {
@@ -133,8 +166,11 @@ function main() {
   SLL.insertFirst("Starbuck");
   SLL.insertFirst("Tauhida");
   // SLL.remove("Squirrel");
-  // SLL.insertBefore("Now", "Boomer");
-  SLL.insertAfter("Today", "Apollo");
+  // SLL.insertBefore("Athena", "Boomer");
+  // SLL.insertAfter("Hotdog", "Helo");
+  // SLL.insertAt("Kat", 3);
+  // SLL.find("Kat");
+  SLL.remove("Tauhida");
 }
 
 main();
