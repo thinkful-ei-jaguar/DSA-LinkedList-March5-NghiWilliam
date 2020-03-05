@@ -104,6 +104,20 @@ class LinkedList {
       return;
     }
   }
+
+  insertAfter(item, itemAfter) {
+    if (this.head === null) {
+      this.head = new _Node(item);
+      console.log("This list was empty - added as first item");
+      return;
+    }
+    current = this.head;
+
+    while (current.next !== null && current.value !== itemAfter) {
+      current = current.next;
+    }
+    return (current.next = new _Node(item, current.next));
+  }
 }
 
 function main() {
@@ -114,8 +128,9 @@ function main() {
   SLL.insertFirst("Husker");
   SLL.insertFirst("Starbuck");
   SLL.insertFirst("Tauhida");
-  SLL.remove("Squirrel");
+  // SLL.remove("Squirrel");
   SLL.insertBefore("Now", "Boomer");
+  SLL.insertBefore("Today", "Helo");
 }
 
 main();
