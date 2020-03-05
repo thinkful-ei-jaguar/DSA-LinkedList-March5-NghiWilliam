@@ -111,10 +111,14 @@ class LinkedList {
       console.log("This list was empty - added as first item");
       return;
     }
-    current = this.head;
+    let current = this.head;
 
     while (current.next !== null && current.value !== itemAfter) {
       current = current.next;
+    }
+    if (current.value !== itemAfter) {
+      console.log("Item not found");
+      return;
     }
     return (current.next = new _Node(item, current.next));
   }
@@ -129,8 +133,8 @@ function main() {
   SLL.insertFirst("Starbuck");
   SLL.insertFirst("Tauhida");
   // SLL.remove("Squirrel");
-  SLL.insertBefore("Now", "Boomer");
-  SLL.insertBefore("Today", "Helo");
+  // SLL.insertBefore("Now", "Boomer");
+  SLL.insertAfter("Today", "Apollo");
 }
 
 main();
