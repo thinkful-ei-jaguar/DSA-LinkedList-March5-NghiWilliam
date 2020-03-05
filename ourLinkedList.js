@@ -157,6 +157,79 @@ class LinkedList {
   }
 }
 
+function display(list) {
+  // Displays the linked list
+  if (!list.head) {
+    console.log("List is empty");
+  }
+  let current = list.head;
+  // Do while loop prints first then assess conditional statement
+  do {
+    console.log(current);
+    current = current.next;
+  } while (current !== null);
+  return;
+}
+
+function size(list) {
+  // Returns the size of the linked list
+  if (!list.head) {
+    console.log("List is empty");
+  }
+  let counter = 1;
+  let current = list.head;
+  while (current.next !== null) {
+    current = current.next;
+    counter++;
+  }
+  return console.log(counter);
+}
+
+function isEmpty(list) {
+  // Finds if the list is empty or not
+  if (!list.head) {
+    console.log("List is empty");
+    return;
+  }
+}
+
+function findPrevious(list, item) {
+  // Finds the node before the item you're looking for
+  if (!list.head) {
+    console.log("List is empty");
+    return;
+  }
+  let current = list.head;
+  let previous = list.head;
+
+  while (current.value !== item && current.next !== null) {
+    previous = current;
+    current = current.next;
+  }
+  // If item can't be found
+  if (current.value !== item) {
+    return console.log("Item does not exist");
+  }
+  // If matching item is first
+  else if (list.head.value === current.value) {
+    return console.log("Item was first - previous item doesn't exist");
+  } else {
+    return previous;
+  }
+}
+
+function findLast(list) {
+  // Returns the last node in the linked list
+  if (!list.head) {
+    return console.log("List is empty");
+  }
+  let current = list.head;
+  while (current.next !== null) {
+    current = current.next;
+  }
+  return current;
+}
+
 function main() {
   SLL = new LinkedList();
   SLL.insertFirst("Apollo");
@@ -170,7 +243,11 @@ function main() {
   // SLL.insertAfter("Hotdog", "Helo");
   // SLL.insertAt("Kat", 3);
   // SLL.find("Kat");
-  SLL.remove("Tauhida");
+  // SLL.remove("Tauhida");
+  // display(SLL);
+  // size(SLL);
+  // findPrevious(SLL, "Tauhida");
+  // findLast(SLL);
 }
 
 main();
